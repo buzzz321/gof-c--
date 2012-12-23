@@ -11,3 +11,6 @@
 *.lai
 *.la
 *.a
+
+build
+gmock-1.6.0

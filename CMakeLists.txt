@@ -33,9 +33,8 @@ ADD_DEFINITIONS("-std=c++11 -Wall --pedantic -g")
 # Add test cpp file
 set (gof_SRC cell.cc 
       board.cc 
-      main.cc
       )
-    add_executable( runUnitTests cell_test.cc ${gof_SRC})
+add_executable( runUnitTests cell_test.cc ${gof_SRC})
 # Link test executable against gtest & gtest_main
 target_link_libraries(runUnitTests gtest gtest_main 
                       ${QT_LIBRARIES}

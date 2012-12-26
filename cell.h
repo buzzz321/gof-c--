@@ -4,9 +4,11 @@
  *  Created on: Dec 23, 2012
  *      Author: anders
  */
+#include <vector>
 
 #ifndef CELL_H_
 #define CELL_H_
+
 
 class Cell {
 public:
@@ -15,6 +17,7 @@ public:
     bool neighbour(const Cell &cell) const;
 	int getX() const{return x;};
 	int getY() const{return y;};
+    int neighbours(std::vector<Cell> cells);
 private:
   int x;
   int y;

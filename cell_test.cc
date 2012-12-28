@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "cell.h"
+#include "board.h"
+
 #include <vector>
 
 using namespace std;
@@ -39,4 +41,45 @@ TEST(cell_test_case, test_zero_neighbours){
   Cell uat(0,0);
 
   EXPECT_EQ(0,uat.neighbours(data));
+}
+
+TEST(cell_test_case, test_rule1_one_dead){
+  vector<Cell> data;
+  data.push_back(Cell(0,1));
+  data.push_back(Cell(1,1));
+  data.push_back(Cell(1,0));
+  data.push_back(Cell(10,0));
+  
+  Board uat(data);
+  EXPECT_EQ(1, uat.rule1().size());
+}
+
+TEST(cell_test_case, test_rule1_none_dead){
+  vector<Cell> data;
+  data.push_back(Cell(0,1));
+  data.push_back(Cell(1,1));
+  data.push_back(Cell(1,0));  
+
+  Board uat(data);
+  EXPECT_EQ(0, uat.rule1().size());
+}
+
+TEST(cell_test_case, test_rule3_one_dead){
+  vector<Cell> data;
+  data.push_back(Cell(0,1));
+  data.push_back(Cell(1,1));
+  data.push_back(Cell(1,0));
+  data.push_back(Cell(0,-1));
+
+  Board uat(data);
+  EXPECT_EQ(1, uat.rule3().size());
+}
+TEST(cell_test_case, test_rule3_none_dead){
+  vector<Cell> data;
+  data.push_back(Cell(0,1));
+  data.push_back(Cell(1,1));
+  data.push_back(Cell(1,0));
+
+  Board uat(data);
+  EXPECT_EQ(0, uat.rule3().size());
 }

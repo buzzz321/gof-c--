@@ -18,6 +18,7 @@ public:
     std::vector<Cell> rule1();
     std::vector<Cell> rule2();
     std::vector<Cell> rule3();
+    std::vector<Cell> rule4(const std::vector<Cell> &candidates, const std::vector<Cell> & living_cells);
 private:
   std::vector<Cell> cells_current_gen;
   std::vector<Cell> dead_cells;

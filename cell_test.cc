@@ -103,3 +103,17 @@ TEST(cell_test_case, test_rule2_two_three_neighbours_alive){
   EXPECT_EQ(3, uat.rule2().size());
 }
 
+TEST(cell_test_case, test_rule4_ressurect_one_with_three_living_neighbours_alive){
+  vector<Cell> data;
+  vector<Cell> candiates;
+
+  candiates.push_back(Cell(0,0));
+  data.push_back(Cell(1,1));
+  data.push_back(Cell(1,0));
+  data.push_back(Cell(0,-1));
+
+  Board uat(data);
+  
+  EXPECT_EQ(1, uat.rule4(candiates, data).size());
+}
+

@@ -52,3 +52,14 @@ std::vector< Cell > Board::rule3(){
  }
  return dead_cells;
 }
+
+std::vector< Cell > Board::rule4(const std::vector<Cell> &candidates, const std::vector<Cell> & living_cells){
+  vector<Cell> resurection;
+  
+  for( Cell candidate: candidates ){
+    if (candidate.neighbours(living_cells) == 3){
+      resurection.push_back(candidate);
+    }
+  }  
+  return resurection;
+}

@@ -17,6 +17,12 @@ TEST(cell_test_case, test_neighbour){
   EXPECT_EQ(true, uat.neighbour(Cell(0,1))); 
 }
 
+TEST(cell_test_case, test_self_not_neighbour){
+  Cell uat(1,0);
+
+  EXPECT_EQ(false, uat.neighbour(Cell(1,0)));
+}
+
 TEST(cell_test_case, test_not_a_neighbour){
   Cell uat(1,0);
 
@@ -66,14 +72,16 @@ TEST(cell_test_case, test_rule1_none_dead){
 
 TEST(cell_test_case, test_rule3_one_dead){
   vector<Cell> data;
+  data.push_back(Cell(0,0));
   data.push_back(Cell(0,1));
   data.push_back(Cell(1,1));
   data.push_back(Cell(1,0));
-  data.push_back(Cell(0,-1));
 
   Board uat(data);
-  EXPECT_EQ(1, uat.rule3().size());
+  vector<Cell> ans = uat.rule3();
+  EXPECT_EQ(0, ans.size());
 }
+
 TEST(cell_test_case, test_rule3_none_dead){
   vector<Cell> data;
   data.push_back(Cell(0,1));
@@ -83,3 +91,15 @@ TEST(cell_test_case, test_rule3_none_dead){
   Board uat(data);
   EXPECT_EQ(0, uat.rule3().size());
 }
+
+TEST(cell_test_case, test_rule2_two_three_neighbours_alive){
+  vector<Cell> data;
+  data.push_back(Cell(0,1));
+  data.push_back(Cell(1,1));
+  data.push_back(Cell(1,0));
+  data.push_back(Cell(0,-1));
+
+  Board uat(data);
+  EXPECT_EQ(3, uat.rule2().size());
+}
+

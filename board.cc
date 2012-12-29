@@ -6,7 +6,8 @@
  */
 
 #include "board.h"
-
+#include <iostream>
+using namespace std;
 /*
 
 1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -23,8 +24,7 @@ Board::~Board() {
 
 }
 
-std::vector< Cell > Board::rule1()
-{
+std::vector< Cell > Board::rule1(){
  for (Cell &cell : cells_current_gen){
    if(cell.neighbours(cells_current_gen) < 2){
      dead_cells.push_back(cell);
@@ -33,9 +33,19 @@ std::vector< Cell > Board::rule1()
  return dead_cells;
 }
 
-std::vector< Cell > Board::rule3()
-{
- for (Cell &cell : cells_current_gen){
+std::vector< Cell > Board::rule2(){
+    std::vector<Cell> retVal;
+    for (Cell &cell : cells_current_gen){
+    int neibours = cell.neighbours(cells_current_gen);
+    if(neibours == 2 || neibours == 3){
+     retVal.push_back(cell);
+   }
+  }
+  return retVal;
+}
+
+std::vector< Cell > Board::rule3(){
+ for (Cell &cell : cells_current_gen){  
    if(cell.neighbours(cells_current_gen) > 3){
      dead_cells.push_back(cell);
    }

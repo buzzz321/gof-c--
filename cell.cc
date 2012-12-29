@@ -21,7 +21,7 @@ Cell::~Cell() {
 
 bool Cell::neighbour(const Cell& cell) const
 {
-  return abs(x-cell.getX())<= 1 && abs(y-cell.getY()) <= 1;
+  return (abs(x-cell.getX())<= 1 && abs(y-cell.getY()) <= 1) && !( x==cell.getX() && y==cell.getY() );
 }
 
 int Cell::neighbours(std::vector<Cell> cells){

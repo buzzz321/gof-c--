@@ -16,6 +16,7 @@ public:
 	virtual ~Board();
 
     std::vector<Cell> rule1();
+    std::vector<Cell> rule2();
     std::vector<Cell> rule3();
 private:
   std::vector<Cell> cells_current_gen;
